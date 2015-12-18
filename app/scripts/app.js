@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module( 'yourApp', [
+  .module( 'myApp', [
     'ngResource',
     'ui.router'
   ] )
