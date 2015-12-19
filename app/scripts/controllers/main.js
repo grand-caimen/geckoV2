@@ -1,5 +1,7 @@
 'use strict';
 
+
+//Need define the OnClick event for the input button
 angular.module( 'myApp' )
   .controller( 'MainCtrl', [
     '$scope',
@@ -15,3 +17,4 @@ angular.module( 'myApp' )
 
     }
   ] );
+
