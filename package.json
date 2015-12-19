@@ -44,7 +44,13 @@
     "loopback-boot": "^2.6.5",
     "loopback-datasource-juggler": "^2.19.0",
     "loopback-explorer": "^1.1.0",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
+    "express": "^4.13.3",
+    "pg": "^4.4.3",
+    "pg-promise": "^2.8.4",
+    "uuid": "^2.0.1"
   },
   "description": "A starter pack for creating websites hosting a LoopBack REST API presented using an AngularJS and Bootstrap (CSS) frontend.",
   "devDependencies": {
