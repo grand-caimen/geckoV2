@@ -24,6 +24,8 @@ app.use(express.static("./../app"));
 app.use('/bower_components', express.static('./../bower_components'))
 
 
+/*----------------USERS----------------*/
+
 app.post('/signup', function (req, res) {
   user.newUser(req.body)
     .then(function(data) {
@@ -34,7 +36,6 @@ app.post('/signup', function (req, res) {
           res.send(200, 'user logged in');
         })
     })
-
 })
 
 app.post('/signin', function (req, res) {
@@ -69,7 +70,7 @@ app.get('/mytasks', function (req, res) {
     })
 })
 
-app.post('/newtasks', function (req, res) {
+app.post('/newtask', function (req, res) {
   user.isAuthenticated(req.cookies.sessionId)
     .then(function(userId){
       if(userId){
@@ -79,9 +80,54 @@ app.post('/newtasks', function (req, res) {
         console.log('user not authenticated');
       }
     })
-
 })
 
+/*---------------SITTERS--------------------*/
+
+app.post('sitter/signin', function (req, res) {
+  sitter.login(req.body)
+    .then(function(sessionId) {
+      console.log('applying sesssionId', sessionId)
+      res.cookie('sessionId', sessionId);
+      res.send(200, 'user logged in');
+    })
+})
+
+app.post('sitter/signout', function (req, res ){
+  sitter.logout(req.cookies.sessionId)
+    .then(function() {
+      res.cookie('sessionId', undefined);
+      res.send(200, 'user logged out')
+    })
+})
+
+app.get('sitter/mytasks', function (req, res) {
+  sitter.isAuthenticated(req.cookies.sessionId)
+    .then(function(data){
+      if(data){
+        sitter.myTasks(data)
+          .then(function (tasks){
+            res.send(200, tasks);
+          });
+      } else {
+        console.log('GET Tasks Failed or whatever');
+      }
+    })
+})
+
+app.get('sitter/newtasks', function (req, res) {
+  sitter.isAuthenticated(req.cookies.sessionId)
+    .then(function(employeeId){
+      if (employeeId) {
+        sitter.pendingTasks()
+          .then(function (tasks) {
+            res.send(200, tasks);
+          })
+      } else {
+        console.log('GET new tasks failed')
+      }
+    })
+})
 
 // var testTrip = [
 // { date: '12/3', time:'morning', task:'water plants', notes:'by the sink'},
