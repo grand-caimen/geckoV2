@@ -56,16 +56,14 @@ module.exports = {
     addTask: function(tasks, user_id){
       console.log(tasks);
       tasks.forEach(function(task){
-        console.log('task.tast', task.task);
         db.query('INSERT INTO tasks (user_id, date, time, task, notes, status) VALUES (' + "'" + user_id + "'," +  "'" + task.date + "'," + "'" + task.time + "'," + "'" + task.task + "'," + "'" + task.notes + "'," + "'new'" + ');')
         .catch(function(error){
           console.log('ERROR DETECTED', error);
         })
-            .then(function() {
-              console.log('task added');
-            })
+        .then(function() {
+          console.log('task added');
+        })
       })
-
     },
 
     getTasks: function(user_id){
@@ -99,7 +97,6 @@ module.exports = {
           console.log('ERROR DETECTED', error);
         })
     }
-
   },
 
   sitter: {
@@ -121,7 +118,6 @@ module.exports = {
               db.query('INSERT INTO employee_sessions (session_id, employee_id) VALUES (' +  "'" +sessionId + "'," + "'" + data[0].id + "'" + ');')
                 .then(function(error){
                   console.log('User Logged in');
-                  // return sessionId;
                 })
             } else {
               console.log('AUTH FAILED');
@@ -129,12 +125,11 @@ module.exports = {
             }
           }
         })
-          .then(function(data) {
-            if (isAuth) {
-              return sessionId;
-            }
-          })
-
+        .then(function(data) {
+          if (isAuth) {
+            return sessionId;
+          }
+        })
     },
 
     logout: function (sessionId) {
@@ -142,7 +137,6 @@ module.exports = {
       .catch(function(error){
         console.log('ERROR DETECTED', error);
       })
-
     },
 
     myTasks: function (employee_id) {
@@ -154,7 +148,6 @@ module.exports = {
         .catch(function(error){
           console.log('ERROR DETECTED', error);
         })
-
     },
 
     pendingTasks: function () {
@@ -173,7 +166,6 @@ module.exports = {
         .then(function () {
           console.log('task assigned');
         })
-
     },
 
     completeTask: function (taskId) {
@@ -181,7 +173,6 @@ module.exports = {
         .then(function () {
           console.log('task complete');
         })
-
     },
 
     isAuthenticated: function (sessionId) {
@@ -197,7 +188,6 @@ module.exports = {
           console.log('ERROR DETECTED', error);
         })
     },
-
   }
 }
 
