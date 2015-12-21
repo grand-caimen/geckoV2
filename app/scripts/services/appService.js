@@ -19,3 +19,22 @@ angular.module( 'myApp' )
 
   return UserLogin;
 });
+
+
+.factory('UserSignUp', function ($http) {
+  var UserSignUp = {};
+
+  UserSignUp.userPostLogin = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/signup',
+      data: user
+    })
+    .then(function (res) {
+      console.log('user inside factory: ', res.data);
+      return res.data.sessionId;
+    })
+  };
+
+  return UserSignUp;
+});

@@ -2,14 +2,14 @@
 
 angular.module( 'myApp' )
 
-.controller( 'UserLoginCtrl',
-    function ( $scope, UserLogin ) {
-      var user = {};
+.controller( 'UserSignUpCtrl',
+    function ( $scope, UserSignUp) {
+      var info = {};
 
-      $scope.userLogin = function() {
-        user.username = $scope.username;
-        user.password = $scope.password;
-        console.log('user: ', user);
+      $scope.userSignUp = function() {
+        info.username = $scope.username;
+        info.password = $scope.password;
+        console.log('user: ', info);
         console.log(UserLogin);
         UserLogin.userPostLogin(user)
       }
