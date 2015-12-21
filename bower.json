@@ -1,11 +1,11 @@
-{
+  {
   "name": "loopback-angular-ui-router",
   "version": "1.0.0",
   "description": "",
   "contributors": [
-    { 
-      "name": "Jeff Rose", 
-      "email": "jrose0@gmail.com" 
+    {
+      "name": "Jeff Rose",
+      "email": "jrose0@gmail.com"
     }
   ],
   "repository": {
