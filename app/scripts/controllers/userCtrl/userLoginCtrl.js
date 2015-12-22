@@ -9,10 +9,8 @@ angular.module( 'myApp' )
       $scope.userLogin = function() {
         user.username = $scope.username;
         user.password = $scope.password;
-        console.log('user: ', user);
+        console.log('user I: ', user);
         console.log(UserLogin);
         UserLogin.userPostLogin(user)
       }
     });
-
-
