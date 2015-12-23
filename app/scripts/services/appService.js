@@ -36,4 +36,20 @@ angular.module( 'myApp' )
   };
 
   return UserSignUp;
+})
+
+.factory('UserTasks', function ($http) {
+  var UserTasks = {};
+
+  UserTasks.getTasks = function(tasks) {
+    return $http({
+      method: 'GET',
+      url: '/mytasks'
+    })
+    .then(function (res) {
+      ('tasks inside UserTasks.getTasks factory: ', res);
+    })
+  };
+
+  return UserTasks;
 });

@@ -33,7 +33,7 @@ app.post('/signup', function (req, res) {
         .then(function(sessionId) {
           console.log('applying sesssionId', sessionId)
           res.cookie('sessionId', sessionId);
-          res.send(200, 'user logged in');
+          res.send(200, 'user logged in', sessionId);
         })
     })
 })
@@ -64,7 +64,7 @@ app.get('/mytasks', function (req, res) {
           .then(function(tasks){
             res.send(200, tasks);
           });
-      } else{
+      } else {
         console.log('GET Tasks Failed or whatever');
       }
     })
@@ -76,7 +76,7 @@ app.post('/newtask', function (req, res) {
       if(userId){
         user.addTask(req.body, userId)
         res.send(200, 'Task Added');
-      } else{
+      } else {
         console.log('user not authenticated');
       }
     })
