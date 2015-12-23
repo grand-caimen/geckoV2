@@ -17,6 +17,9 @@ angular.module( 'myApp' )
         console.log('user: ', info);
         console.log(UserSignUp);
         UserSignUp.userPostSignUp(info)
+        .then(function () {
+          $state.go('userTasks');
+        })
       }
     });
 

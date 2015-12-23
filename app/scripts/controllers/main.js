@@ -3,8 +3,7 @@
 
 //Need define the OnClick event for the input button
 angular.module( 'myApp' )
-  .controller( 'MainCtrl', [
-    '$scope',
+  .controller( 'MainCtrl',
     function ( $scope ) {
 
       $scope.awesomeThings = [
@@ -15,6 +14,5 @@ angular.module( 'myApp' )
         'Karma + Jasmine'
       ];
 
-    }
-  ] );
+    });
 
