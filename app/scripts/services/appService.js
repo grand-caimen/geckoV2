@@ -47,7 +47,8 @@ angular.module( 'myApp' )
       url: '/mytasks'
     })
     .then(function (res) {
-      ('tasks inside UserTasks.getTasks factory: ', res);
+      console.log('tasks inside UserTasks.getTasks factory: ', res);
+      return res;
     })
   };
 
