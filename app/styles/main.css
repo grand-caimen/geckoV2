@@ -8,6 +8,10 @@ h2 {
   text-align: center;
 }
 
+.logout-btn {
+  text-align: right;
+}
+
 .home-btns {
   text-align: center;
   padding-left: 0px;
