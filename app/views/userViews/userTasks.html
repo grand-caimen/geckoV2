@@ -1,6 +1,7 @@
 <h2>Welcome to handy guy!</h2>
 <div class="hero-unit" ng-controller='UserTasksCtrl'>
   <h1>Hey, there {{ loggedUser.username }}!</h1>
+<div>
   <p>Your requested tasks:</p>
   <ul>
     <li ng-repeat="task in tasks">{{ task }}</li>
