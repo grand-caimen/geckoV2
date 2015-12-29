@@ -13,7 +13,8 @@ angular.module( 'myApp' )
     })
     .then(function (res) {
       console.log('user inside factory: ', res.data);
-      return res.data.sessionId;
+      console.log('user sessionID after signin: ', res.data.sessionId);
+      return res.data;
     })
   };
 
@@ -53,4 +54,22 @@ angular.module( 'myApp' )
   };
 
   return UserTasks;
-});
+})
+
+.factory('SitterLogin', function ($http) {
+  var SitterLogin = {};
+
+  SitterLogin.sitterPostLogin = function(sitter) {
+    return $http({
+      method: 'POST',
+      url: 'sitter/signin',
+      data: sitter
+    })
+    .then(function (res) {
+      console.log('sitter inside factory: ', res.data);
+      return res.data.sessionId;
+    })
+  };
+
+  return SitterLogin;
+})
