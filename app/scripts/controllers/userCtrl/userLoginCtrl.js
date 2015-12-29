@@ -13,8 +13,13 @@ angular.module( 'myApp' )
         console.log(UserLogin);
         $rootScope.user = user;
         UserLogin.userPostLogin(user)
-        .then(function () {
-          $state.go('userTasks');
+        .then(function (res) {
+          console.log('res after user signin: ', res);
+          if (res) {
+            $state.go('userTasks');
+          } else {
+            alert('invalid username/password');
+          }
         });
       };
     });
