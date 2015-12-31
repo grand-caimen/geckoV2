@@ -41,9 +41,10 @@ app.post('/signup', function (req, res) {
 app.post('/signin', function (req, res) {
   user.login(req.body)
     .then(function(sessionId) {
-      console.log('applying sesssionId', sessionId)
+      console.log('applying sesssionId', sessionId);
       res.cookie('sessionId', sessionId);
-      res.send(200, 'user logged in');
+      //send back sessionId to check whether it was a successful login or not
+      res.send(200, sessionId);
     })
 })
 
