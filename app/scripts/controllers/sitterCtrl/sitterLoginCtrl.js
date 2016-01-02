@@ -13,8 +13,12 @@ angular.module( 'myApp' )
         console.log(SitterLogin);
         $rootScope.sitter = sitter;
         SitterLogin.sitterPostLogin(sitter)
-        .then(function () {
-          $state.go('sitterTasks');
+        .then(function (res) {
+          if (res) {
+            $state.go('sitterTasks');
+          } else {
+            alert('Invalid username/password');
+          }
         });
       };
     });

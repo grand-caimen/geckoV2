@@ -67,7 +67,7 @@ angular.module( 'myApp' )
     })
     .then(function (res) {
       console.log('sitter inside factory: ', res.data);
-      return res.data.sessionId;
+      return res.data;
     })
   };
 

@@ -18,7 +18,7 @@ angular.module( 'myApp' )
           if (res) {
             $state.go('userTasks');
           } else {
-            alert('invalid username/password');
+            alert('Invalid username/password');
           }
         });
       };
