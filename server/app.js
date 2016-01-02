@@ -20,7 +20,8 @@ var server = app.listen(3333, function () {
 });
 
 // Serve the client files
-app.use(express.static("./../app"));
+app.use(express.static(__dirname + "./../app"));
+app.use('/libs', express.static(__dirname + './../libs'));
 app.use('/bower_components', express.static('./../bower_components'))
 
 
@@ -136,21 +137,21 @@ app.get('sitter/newtasks', function (req, res) {
 // { date: '12/4', time:'night', task:'get mail', notes:'mail key on counter'}
 // ]
 
-sitter.assignTask(14, 4);
+// sitter.assignTask(14, 4);
 
-var testUser = {
-  username: 'asdfasdf',
-  name: 'Test User',
-  password: '1234',
-  address: '432 mocking bird lane',
-  phone: '12344567',
-  email: 'donald@gmail.com'
-};
+// var testUser = {
+//   username: 'asdfasdf',
+//   name: 'Test User',
+//   password: '1234',
+//   address: '432 mocking bird lane',
+//   phone: '12344567',
+//   email: 'donald@gmail.com'
+// };
 
-var testLogin = {
-  username: 'festus',
-  password: '1234'
-};
+// var testLogin = {
+//   username: 'festus',
+//   password: '1234'
+// };
 
 // user.login(testLogin)
 //   .then(function(data) {
