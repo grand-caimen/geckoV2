@@ -1,10 +1,10 @@
 <ul>
-  <button ui-sref="index" class="logout-btn">Logout</button>
+  <button  ng-click='userLogout()' class="logout-btn">Logout</button>
 </ul>
 <h2>Task manager</h2>
-<div class="hero-unit" ng-controller='UserTasksCtrl'>
+<div class="hero-unit">
   <p>Hey, there {{ loggedUser.username }}!</p>
-  
+
   <h3><strong>Add task:</strong></h3>
 
 
@@ -16,7 +16,7 @@
 	<input type="radio" name="water" value="security">Water plants
   </form>
 
-  <h3><strong>Notes:</strong></h3>  
+  <h3><strong>Notes:</strong></h3>
   	 <input type="text" rows=7 cols=6 name="firstname">
   <h3><strong>Current Tasks:</strong></h3>
 

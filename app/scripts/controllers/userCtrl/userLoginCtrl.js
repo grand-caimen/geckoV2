@@ -3,16 +3,15 @@
 angular.module( 'myApp' )
 
 .controller( 'UserLoginCtrl',
-    function ( $rootScope, $scope, $state, UserLogin ) {
+    function ( $rootScope, $scope, $state, User ) {
       var user = {};
 
       $scope.userLogin = function() {
         user.username = $scope.username;
         user.password = $scope.password;
         console.log('user I: ', user);
-        console.log(UserLogin);
         $rootScope.user = user;
-        UserLogin.userPostLogin(user)
+        User.userPostLogin(user)
         .then(function (res) {
           console.log('res after user signin: ', res);
           if (res) {
