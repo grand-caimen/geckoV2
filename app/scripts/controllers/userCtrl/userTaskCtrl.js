@@ -4,7 +4,6 @@ angular.module( 'myApp' )
 
 .controller( 'UserTasksCtrl',
     function ( $rootScope, $scope, $state, User ) {
-      $scope.loggedUser = $scope.user;
       $scope.tasks = ['Current tasks'];
 
       $scope.refreshTasks = function() {

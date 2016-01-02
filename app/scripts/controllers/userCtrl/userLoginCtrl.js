@@ -13,6 +13,7 @@ angular.module( 'myApp' )
 
 
       $scope.userLogin = function() {
+        $rootScope.user = $scope.user;
         User.userPostLogin($scope.user)
         .then(function (res) {
           console.log('res after user signin: ', res);
