@@ -14,7 +14,7 @@ angular
         .state( 'index', {
           url: '/',
           templateUrl: 'views/userViews/userLogin.html',
-          controller: 'MainCtrl'
+          controller: 'UserLoginCtrl'
         })
         .state('userLogin', {
           url: '/userlogin',

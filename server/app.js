@@ -44,7 +44,7 @@ app.post('/signin', function (req, res) {
     .then(function(sessionId) {
       console.log('applying sesssionId', sessionId);
       res.cookie('sessionId', sessionId);
-      //send back sessionId to check whether it was a successful login or not
+      //send back sessionId to check whether  it was a successful login or not
       res.send(200, sessionId);
     })
 })
