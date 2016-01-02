@@ -5,7 +5,7 @@ angular.module( 'myApp' )
 .controller( 'UserTasksCtrl',
     function ( $rootScope, $scope, $state, UserTasks ) {
       $scope.loggedUser = $scope.user;
-      $scope.tasks = ['handy tasks go here!'];
+      $scope.tasks = ['Current tasks'];
 
       $scope.refreshTasks = function() {
         UserTasks.getTasks()
