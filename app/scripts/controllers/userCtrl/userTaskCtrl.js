@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module( 'myApp' )
+angular.module( 'myApp')
 
-.controller( 'UserTasksCtrl',
+
+.controller( 'UserTasksCtrl', 'ADMdtpProvider'
     function ( $rootScope, $scope, $state, UserTasks ) {
       $scope.loggedUser = $scope.user;
       $scope.tasks = ['Current tasks'];
@@ -18,3 +19,12 @@ angular.module( 'myApp' )
 
       $scope.refreshTasks();
     });
+
+
+app.config(['ADMdtpProvider', function(ADMdtp) {
+    ADMdtp.setOptions({
+        calType: 'gregorian',
+        format: 'YYYY/MM/DD HH:MM',
+        ...
+    });
+}]);

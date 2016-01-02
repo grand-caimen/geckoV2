@@ -4,22 +4,34 @@
 <h2>Task manager</h2>
 <div class="hero-unit" ng-controller='UserTasksCtrl'>
   <p>Hey, there {{ loggedUser.username }}!</p>
-  
-  <h3><strong>Add task:</strong></h3>
+  <form>  
+    <h3><strong>Pick a day:</strong></h3>
+    <!-- Adding the dateTimePicker -->
+    <adm-dtp ng-model='date'></adm-dtp>
+    <!-- Adding the dateTimePicker -->
+    <h3><strong>Pick time:</strong></h3>
+    <select>
+      <option value="morning">Morning</option>
+      <option value="afternoon">Afternoon</option>
+      <option value="evening">Evening</option>
+    </select
+    <br>
 
+    <h3><strong>Tasks:</strong></h3>
+    <select>
+      <option value="trash">Move trash</option>
+      <option value="mail">Get mail</option>
+      <option value="security">Security check</option>
+      <option value="move_car">Move car</option>
+      <option value="feed_pet">Feed pet</option>
+    </select
+    
+    <h3><strong>Notes:</strong></h3>  
+    <input type="text" rows=7 cols=6 name="firstname"><br>
 
-  <h3><strong>Tasks:</strong></h3>
-  <form action="select_tasks">
-	<input type="radio" name="trash" value="trash">Pick trash<br>
-	<input type="radio" name="mail" value="mail">Pick mail<br>
-	<input type="radio" name="security" value="security">Security check<br>
-	<input type="radio" name="water" value="security">Water plants
+    <br><button class='btn btn-lg btn-primary btn-block'>Submit</button>
   </form>
-
-  <h3><strong>Notes:</strong></h3>  
-  	 <input type="text" rows=7 cols=6 name="firstname">
-  <h3><strong>Current Tasks:</strong></h3>
-
+  <h3><strong>My Tasks:</strong></h3>
   <ul>
     <li ng-repeat="task in tasks">{{ task }}</li>
   </ul>

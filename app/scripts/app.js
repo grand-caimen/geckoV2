@@ -3,10 +3,11 @@
 angular
   .module( 'myApp', [
     'ngResource',
-    'ui.router'
+    'ui.router',
+    'ADM-dateTimePicker'
   ] )
   .config(
-    function ( $stateProvider, $urlRouterProvider ) {
+    function ( $stateProvider, $urlRouterProvider, ADMdtpProvider) {
 
       //delete $httpProvider.defaults.headers.common[ 'X-Requested-With' ];
       $urlRouterProvider.otherwise( '/' );
