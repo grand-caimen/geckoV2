@@ -3,7 +3,7 @@
 angular.module( 'myApp' )
 
 .controller( 'UserSignUpCtrl',
-    function ( $scope, UserSignUp) {
+    function ( $scope, User ) {
       var info = {};
 
       $scope.userSignUp = function() {
@@ -15,8 +15,7 @@ angular.module( 'myApp' )
         info.phone = $scope.phone;
 
         console.log('user: ', info);
-        console.log(UserSignUp);
-        UserSignUp.userPostSignUp(info)
+        User.userPostSignUp(info)
         .then(function () {
           $state.go('userTasks');
         })

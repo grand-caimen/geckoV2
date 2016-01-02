@@ -3,16 +3,24 @@
 angular.module( 'myApp' )
 
 .controller( 'UserTasksCtrl',
-    function ( $rootScope, $scope, $state, UserTasks ) {
+    function ( $rootScope, $scope, $state, User ) {
       $scope.loggedUser = $scope.user;
       $scope.tasks = ['Current tasks'];
 
       $scope.refreshTasks = function() {
-        UserTasks.getTasks()
+        User.getTasks()
+        .then(function (tasks) {
         // todo: push new/updated tasks to tasks arr
         // so we can display them.
-        .then(function (tasks) {
           console.log('tasks: ', tasks);
+        })
+      }
+
+      $scope.userLogout = function() {
+        User.userPostLogout()
+        .then(function (res) {
+          console.log('after user logout: ', res);
+          $state.go('index');
         })
       }
 

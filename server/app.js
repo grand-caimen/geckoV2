@@ -54,7 +54,6 @@ app.post('/signout', function (req, res ){
       res.cookie('sessionId', undefined);
       res.send(200, 'user logged out')
     })
-
 })
 
 app.get('/mytasks', function (req, res) {
