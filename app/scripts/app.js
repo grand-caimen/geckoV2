@@ -13,7 +13,7 @@ angular
       $stateProvider
         .state( 'index', {
           url: '/',
-          templateUrl: 'views/main.html',
+          templateUrl: 'views/userViews/userLogin.html',
           controller: 'MainCtrl'
         })
         .state('userLogin', {
