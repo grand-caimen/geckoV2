@@ -1,7 +1,8 @@
 <ul>
-  <button ui-sref="index" class="logout-btn">Logout</button>
+  <button  ng-click='userLogout()' class="logout-btn">Logout</button>
 </ul>
 <h2>Task manager</h2>
+<<<<<<< HEAD
 <div class="hero-unit" ng-controller='UserTasksCtrl'>
   <p>Hey, there {{ loggedUser.username }}!</p>
   <form>  
@@ -16,6 +17,12 @@
       <option value="evening">Evening</option>
     </select
     <br>
+=======
+<div class="hero-unit">
+  <p>Hey, there {{ user.username }}!</p>
+
+  <h3><strong>Add task:</strong></h3>
+>>>>>>> 73aa12cb6b9c5a731968414c660ba36ff888a98d
 
     <h3><strong>Tasks:</strong></h3>
     <select>
@@ -31,7 +38,15 @@
 
     <br><button class='btn btn-lg btn-primary btn-block'>Submit</button>
   </form>
+<<<<<<< HEAD
   <h3><strong>My Tasks:</strong></h3>
+=======
+
+  <h3><strong>Notes:</strong></h3>
+  	 <input type="text" rows=7 cols=6 name="firstname">
+  <h3><strong>Current Tasks:</strong></h3>
+
+>>>>>>> 73aa12cb6b9c5a731968414c660ba36ff888a98d
   <ul>
     <li ng-repeat="task in tasks">{{ task }}</li>
   </ul>

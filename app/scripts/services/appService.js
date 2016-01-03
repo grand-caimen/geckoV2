@@ -2,10 +2,10 @@
 
 angular.module( 'myApp' )
 
-.factory('UserLogin', function ($http) {
-  var UserLogin = {};
+.factory('User', function ($http) {
+  var User = {};
 
-  UserLogin.userPostLogin = function(user) {
+  User.userPostLogin = function(user) {
     return $http({
       method: 'POST',
       url: '/signin',
@@ -18,13 +18,7 @@ angular.module( 'myApp' )
     })
   };
 
-  return UserLogin;
-})
-
-.factory('UserSignUp', function ($http) {
-  var UserSignUp = {};
-
-  UserSignUp.userPostSignUp = function(info) {
+  User.userPostSignUp = function(info) {
     return $http({
       method: 'POST',
       url: '/signup',
@@ -36,13 +30,7 @@ angular.module( 'myApp' )
     })
   };
 
-  return UserSignUp;
-})
-
-.factory('UserTasks', function ($http) {
-  var UserTasks = {};
-
-  UserTasks.getTasks = function(tasks) {
+  User.getTasks = function(tasks) {
     return $http({
       method: 'GET',
       url: '/mytasks'
@@ -53,13 +41,25 @@ angular.module( 'myApp' )
     })
   };
 
-  return UserTasks;
+  User.userPostLogout = function() {
+    return $http({
+      method: 'POST',
+      url: '/signout'
+    })
+    .then(function (res) {
+      console.log('user inside factory: ', res.data);
+      console.log('user sessionID after logout: ', res.data.sessionId);
+      return res.data;
+    })
+  }
+
+  return User;
 })
 
-.factory('SitterLogin', function ($http) {
-  var SitterLogin = {};
+.factory('Sitter', function ($http) {
+  var Sitter = {};
 
-  SitterLogin.sitterPostLogin = function(sitter) {
+  Sitter.sitterPostLogin = function(sitter) {
     return $http({
       method: 'POST',
       url: 'sitter/signin',
@@ -67,7 +67,7 @@ angular.module( 'myApp' )
     })
     .then(function (res) {
       console.log('sitter inside factory: ', res.data);
-      return res.data.sessionId;
+      return res.data;
     })
   };
 

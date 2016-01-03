@@ -14,7 +14,19 @@
   <!-- build:css({.tmp,app}) styles/main.css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles/main.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="styles/ADM-dateTimePicker.min.css">
+=======
+  <meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package" />
+  <meta name="keywords" content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/app.min.css">
+>>>>>>> 73aa12cb6b9c5a731968414c660ba36ff888a98d
   <!-- endbuild -->
   
 <!--         <link rel="stylesheet" href="../node_modules/adm-dtp/dist/ADM-dateTimePicker.css" />
@@ -33,7 +45,7 @@
   <![endif]-->
 
   <!-- Add your site or application content here -->
-  <div ui-view=""></div>
+  <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="../node_modules/adm-dtp/dist/ADM-dateTimePicker.min.js"></script>
@@ -47,7 +59,6 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/ADM-dateTimePicker.min.js"></script>
   <script src="scripts/services/LoopBack.js"></script>
-  <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/userCtrl/userLoginCtrl.js"></script>
   <script src="scripts/controllers/userCtrl/userSignUpCtrl.js"></script>
   <script src="scripts/controllers/userCtrl/userTaskCtrl.js"></script>
