@@ -1,7 +1,7 @@
 'use strict';
 
-angular
-  .module( 'myApp', [
+angular.module( 'myApp', [
+    'ngCookies',
     'ngResource',
     'ui.router'
   ] )
