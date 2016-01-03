@@ -1,6 +1,6 @@
 # geckoV2
 
-Welcome to HouzSit.  Our goal was to create an uber-like scheduled service that people can use to have certain tasks completed while they are out of town.  The app is an angular front-end with a node/express webserver and a persistent PostgreSQL database.
+Welcome to **HouzSit**.  Our goal was to create an uber-like scheduled service that people can use to have certain tasks completed while they are out of town.  The app is an angular front-end with a node/express webserver and a persistent PostgreSQL database.
 
 ## Installation  
 
