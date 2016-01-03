@@ -7,6 +7,22 @@ angular.module( 'myApp' )
       console.log('typeof cookie: ', typeof $cookies.get('sessionId'));
       if ($cookies.get('sessionId') !== 'undefined') {
 
+        var newTask = {};
+
+        $scope.addTask = function() {
+          newTask.date = $scope.date;
+          newTask.time = $scope.data.time;
+          newTask.task = $scope.data.task;
+          newTask.notes = $scope.notes;
+
+          console.log('New Task: ', newTask);
+
+          User.userPostAddTask(newTask)
+          .then(function (tasks) {
+            console.log('All tasks: ', tasks);
+          })
+        }
+
         $scope.tasks = ['Current tasks'];
 
         $scope.refreshTasks = function() {
@@ -14,7 +30,7 @@ angular.module( 'myApp' )
           .then(function (tasks) {
           // todo: push new/updated tasks to tasks arr
           // so we can display them.
-            console.log('tasks: ', tasks);
+            console.log('Refreshed tasks: ', tasks);
           })
         }
 

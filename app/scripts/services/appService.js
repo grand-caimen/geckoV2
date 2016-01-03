@@ -41,6 +41,18 @@ angular.module( 'myApp' )
     })
   };
 
+  User.userPostAddTask = function(newTask) {
+    return $http({
+      method: 'POST',
+      url: '/newtask',
+      data: newTask
+    })
+    .then(function (res) {
+      console.log('tasks inside UserTasks.newTasks factory: ', res);
+      return res;
+    })
+  };
+
   User.userPostLogout = function() {
     return $http({
       method: 'POST',
