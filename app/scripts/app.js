@@ -14,8 +14,8 @@ angular
       $stateProvider
         .state( 'index', {
           url: '/',
-          templateUrl: 'views/main.html',
-          controller: 'MainCtrl'
+          templateUrl: 'views/userViews/userLogin.html',
+          controller: 'UserLoginCtrl'
         })
         .state('userLogin', {
           url: '/userlogin',

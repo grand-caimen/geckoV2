@@ -3,22 +3,24 @@
 angular.module( 'myApp' )
 
 .controller( 'UserLoginCtrl',
-    function ( $rootScope, $scope, $state, UserLogin ) {
-      var user = {};
+    function ( $rootScope, $scope, $state, User ) {
+       $scope.user = {
+         username: undefined,
+         password: undefined
+       };
+
+       $scope.authError = undefined;
+
 
       $scope.userLogin = function() {
-        user.username = $scope.username;
-        user.password = $scope.password;
-        console.log('user I: ', user);
-        console.log(UserLogin);
-        $rootScope.user = user;
-        UserLogin.userPostLogin(user)
+        $rootScope.user = $scope.user;
+        User.userPostLogin($scope.user)
         .then(function (res) {
           console.log('res after user signin: ', res);
           if (res) {
             $state.go('userTasks');
           } else {
-            alert('invalid username/password');
+            $scope.authError = 'Invalid username/password'
           }
         });
       };
