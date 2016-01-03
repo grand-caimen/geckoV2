@@ -8,6 +8,7 @@ angular.module( 'myApp' )
       if ($cookies.get('sessionId') !== 'undefined') {
 
         var newTask = {};
+        $scope.myTasks = [];
 
         $scope.addTask = function() {
           newTask.date = $scope.date;
@@ -24,13 +25,13 @@ angular.module( 'myApp' )
           })
         }
 
-        $scope.tasks = ['Current tasks'];
-
         $scope.refreshTasks = function() {
           User.userGetTasks()
           .then(function (tasks) {
           // todo: push new/updated tasks to tasks arr
           // so we can display them.
+          $scope.myTasks = tasks.data
+
             console.log('Refreshed tasks: ', tasks);
           })
         }
