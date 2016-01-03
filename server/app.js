@@ -49,7 +49,7 @@ app.post('/signin', function (req, res) {
     })
 })
 
-app.post('/signout', function (req, res ){
+app.post('/signout', function (req, res){
   user.logout(req.cookies.sessionId)
     .then(function() {
       res.cookie('sessionId', undefined);

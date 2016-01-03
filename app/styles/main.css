@@ -4,12 +4,13 @@ body {
   color: #333;
 }
 
-h2 {
+.top-h2 {
   text-align: center;
+  margin-top: 50px;
 }
 
 .logout-btn {
-  text-align: right;
+  float: right;
 }
 
 .home-btns {

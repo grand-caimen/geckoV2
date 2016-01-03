@@ -30,7 +30,7 @@ angular.module( 'myApp' )
     })
   };
 
-  User.getTasks = function(tasks) {
+  User.userGetTasks = function() {
     return $http({
       method: 'GET',
       url: '/mytasks'
@@ -49,9 +49,9 @@ angular.module( 'myApp' )
     .then(function (res) {
       console.log('user inside factory: ', res.data);
       console.log('user sessionID after logout: ', res.data.sessionId);
-      return res.data;
+      return res.data.sessionId;
     })
-  }
+  };
 
   return User;
 })
@@ -71,5 +71,28 @@ angular.module( 'myApp' )
     })
   };
 
-  return SitterLogin;
+  Sitter.sitterPostLogout = function() {
+    return $http({
+      method: 'POST',
+      url: 'sitter/signout'
+    })
+    .then(function (res) {
+      console.log('sitter inside factory: ', res.data);
+      console.log('sitter sessionID after logout: ', res.data.sessionId);
+      return res.data.sessionId;
+    })
+  };
+
+  Sitter.sitterGetTasks = function() {
+    return $http({
+      method: 'GET',
+      url: 'sitter/mytasks'
+    })
+    .then(function (res) {
+      console.log('tasks inside SitterTasks.getTasks factory: ', res);
+      return res;
+    })
+  };
+
+  return Sitter;
 })

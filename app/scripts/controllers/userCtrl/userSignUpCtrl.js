@@ -2,11 +2,11 @@
 
 angular.module( 'myApp' )
 
-.controller( 'UserSignUpCtrl',
-    function ( $scope, User ) {
+.controller( 'SitterSignUpCtrl',
+    function ( $scope, Sitter ) {
       var info = {};
 
-      $scope.userSignUp = function() {
+      $scope.sitterSignUp = function() {
         info.username = $scope.username;
         info.password = $scope.password;
         info.name = $scope.name;
@@ -15,7 +15,8 @@ angular.module( 'myApp' )
         info.phone = $scope.phone;
 
         console.log('user: ', info);
-        User.userPostSignUp(info)
+        //Sitter.sitterPostSignUp doesn't exists yet..
+        Sitter.sitterPostSignUp(info)
         .then(function () {
           $state.go('userTasks');
         })

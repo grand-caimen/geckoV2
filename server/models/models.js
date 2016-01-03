@@ -152,7 +152,7 @@ module.exports = {
 
     pendingTasks: function () {
       return db.query('SELECT * FROM tasks WHERE status = "new" ')
-        .then(function(data){
+        .then(function(data){s
           console.log(data);
           return data;
         })

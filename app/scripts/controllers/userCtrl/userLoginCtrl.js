@@ -3,14 +3,14 @@
 angular.module( 'myApp' )
 
 .controller( 'UserLoginCtrl',
-    function ( $rootScope, $scope, $state, User ) {
-       $scope.user = {
+    function ( $rootScope, $scope, $state, $cookies, User ) {
+      console.log('cookie: ', $cookies.get('sessionId'));
+      $scope.user = {
          username: undefined,
          password: undefined
-       };
+      };
 
-       $scope.authError = undefined;
-
+      $scope.authError = undefined;
 
       $scope.userLogin = function() {
         $rootScope.user = $scope.user;
