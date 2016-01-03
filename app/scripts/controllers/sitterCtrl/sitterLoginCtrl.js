@@ -3,7 +3,7 @@
 angular.module( 'myApp' )
 
 .controller( 'SitterLoginCtrl',
-    function ( $rootScope, $scope, $state, SitterLogin ) {
+    function ( $rootScope, $scope, $state, Sitter ) {
       $scope.sitter = {
         username: undefined,
         password: undefined
@@ -12,7 +12,8 @@ angular.module( 'myApp' )
       $scope.authError = undefined;
 
       $scope.sitterLogin = function() {
-        SitterLogin.sitterPostLogin($scope.sitter)
+        $rootScope.sitter = $scope.sitter;
+        Sitter.sitterPostLogin($scope.sitter)
         .then(function (res) {
           if (res) {
             $state.go('sitterTasks');
