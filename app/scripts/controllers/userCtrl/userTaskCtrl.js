@@ -19,6 +19,7 @@ angular.module( 'myApp' )
 
           User.userPostAddTask(newTask)
           .then(function (tasks) {
+            User.userGetTasks();
             console.log('All tasks: ', tasks);
           })
         }

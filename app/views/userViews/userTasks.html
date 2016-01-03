@@ -4,7 +4,7 @@
   <h1>Task manager</h1>
 
   <form ng-submit='addTask()'>
-    <h2><strong>New task</strong></h2>
+    <h2><strong>Add task</strong></h2>
     
     <h4>Select date</h4>
     
@@ -32,9 +32,8 @@
   </form>
 
   <h3><strong>My Tasks</strong></h3>
-
-    <ul>
-      <li ng-repeat="task in tasks">{{ task }}</li>
-    </ul>
+  <ul>
+    <li ng-repeat="task in tasks">{{ task }}</li>
+  </ul>
 
 </div>
