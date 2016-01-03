@@ -1,26 +1,38 @@
 <h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
 <div class="hero-unit">
-<button ng-click='userLogout()' class="logout-btn">Logout</button>
-<h2>Task manager</h2>
+  <button ng-click='userLogout()' class="logout-btn">Logout</button>
+  <h2>Task manager</h2>
 
-  <h3><strong>Add task:</strong></h3>
+  <form ng-submit='userTask()'>
+    <h3><strong>Add task:</strong></h3>
+    
+    <h3><strong>Select time</strong></h3>
+    <select id="dataCombo" class="selectpicker">
+      <option data-hidden="true">Choose one</option>
+      <option value="morning">Morning</option>
+      <option value="afternoon">Afternoon</option>
+      <option value="evening">Evening</option>
+    </select>
 
+    <h3><strong>Tasks:</strong></h3>
+    <select id="dataCombo" class="selectpicker">
+      <option data-hidden="true">Choose one</option>
+      <option value="moveTrash">Move trash</option>
+      <option value="checkMail">Check mail</option>
+      <option value="feedPet">Feed pet</option>
+      <option value="moveCar">Move car</option>
+      <option value="waterPlants">Water Plants</option>
+    </select>
 
-  <h3><strong>Tasks:</strong></h3>
-  <form action="select_tasks">
-	<input type="radio" name="trash" value="trash"> Pick trash<br>
-	<input type="radio" name="mail" value="mail"> Pick mail<br>
-	<input type="radio" name="security" value="security"> Security check<br>
-	<input type="radio" name="water" value="security"> Water plants
+    <h3><strong>Notes:</strong></h3>
+    	 <textarea type="text" rows=6 cols=57 name="notes" placeholder='Please enter special instructions, if any'></textarea>
+    <button class='btn btn-lg btn-primary btn-block'>Submit</button>
   </form>
 
-  <h3><strong>Notes:</strong></h3>
-  	 <input type="text" rows=7 cols=6 name="firstname">
   <h3><strong>Current Tasks:</strong></h3>
 
-  <ul>
-    <li ng-repeat="task in tasks">{{ task }}</li>
-  </ul>
+    <ul>
+      <li ng-repeat="task in tasks">{{ task }}</li>
+    </ul>
 
-  <h3>Site under construction...</h3>
 </div>
