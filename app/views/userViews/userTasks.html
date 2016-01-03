@@ -1,0 +1,26 @@
+<h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
+<div class="hero-unit">
+<button ng-click='userLogout()' class="logout-btn">Logout</button>
+<h2>Task manager</h2>
+
+  <h3><strong>Add task:</strong></h3>
+
+
+  <h3><strong>Tasks:</strong></h3>
+  <form action="select_tasks">
+	<input type="radio" name="trash" value="trash"> Pick trash<br>
+	<input type="radio" name="mail" value="mail"> Pick mail<br>
+	<input type="radio" name="security" value="security"> Security check<br>
+	<input type="radio" name="water" value="security"> Water plants
+  </form>
+
+  <h3><strong>Notes:</strong></h3>
+  	 <input type="text" rows=7 cols=6 name="firstname">
+  <h3><strong>Current Tasks:</strong></h3>
+
+  <ul>
+    <li ng-repeat="task in tasks">{{ task }}</li>
+  </ul>
+
+  <h3>Site under construction...</h3>
+</div>

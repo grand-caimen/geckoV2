@@ -1,0 +1,39 @@
+<!--
+<h2>Welcome to handy guy!</h2>
+<div class="hero-unit">
+  <h1>Login</h1>
+  <form ng-submit='userLogin()'>
+    <input type='text' ng-model='username' placeholder='Enter username'>
+    <input type='password' ng-model='password' placeholder='Password'>
+    <button>Submit</button>
+  </form>
+</div>
+-->
+<!-- <div class="container w-xxl w-auto-xs" ng-controller="SigninFormController" ng-init="app.settings.container = false;"> -->
+<div class="container w-xxl w-auto-xs" ng-controller="UserLoginCtrl" >
+  <a href class="navbar-brand block m-t"><h1> HouzSit </h1></a>
+  <div class="m-b-lg">
+    <h3 class="navbar-brand block m-t" >User Login</h3>
+  </div>
+  <div class="m-b-lg">
+    <form name="form" class="form-validation">
+      <div class="text-danger wrapper text-center" ng-show="authError">
+          {{ authError }}
+      </div>
+      <div class="list-group list-group-sm">
+        <div class="list-group-item">
+          <input type="test" placeholder="Username" class="form-control no-border" ng-model="user.username" required>
+        </div>
+        <div class="list-group-item">
+           <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="userLogin()" ng-disabled='form.$invalid'>Log in</button>
+      <!-- <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">Forgot password?</a></div> -->
+      <div class="line line-dashed"></div>
+      <p class="text-center"><small>Do not have an account?</small></p>
+      <a ui-sref="userSignUp" class="btn btn-lg btn-default btn-block">Create an account</a>
+      <div class="text-center m-t m-b"><a ui-sref="sitterLogin">Sitter login</a></div>
+    </form>
+  </div>
+</div>
