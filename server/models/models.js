@@ -1,13 +1,15 @@
 var db = require ('./../db/sqlscript.js');
 var uuid = require('uuid');
-
+var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 module.exports = {
   user: {
     newUser: function (user) {
+      var hash = bcrypt.hashSync(user.password, salt);
       return db.query("SELECT username FROM users WHERE username = " + "'" + user.username + "'")
         .then(function (data) {
           if (!data.length) {
-            db.query('INSERT INTO users (username,password,name,address,email,phone) VALUES ('+ "'" + user.username + "'," + "'" + user.password + "'," + "'" + user.name + "'," + "'" + user.address + "'," + "'" + user.email + "'," +  "'" + user.phone + "'" + ');')
+            db.query('INSERT INTO users (username,password,name,address,email,phone) VALUES ('+ "'" + user.username + "'," + "'" + hash + "'," + "'" + user.name + "'," + "'" + user.address + "'," + "'" + user.email + "'," +  "'" + user.phone + "'" + ');')
               .then(function(data) {
                 console.log('user created')
               })
@@ -22,7 +24,7 @@ module.exports = {
     },
 
     login: function (userLogin) {
-      var password = userLogin.password;
+      var password = bcrypt.hashSync(userLogin.password,salt);
       var username = userLogin.username;
       var sessionId = uuid();
       var isAuth = false;
