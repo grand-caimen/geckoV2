@@ -3,15 +3,25 @@
 angular.module( 'myApp' )
 
 .controller( 'UserTasksCtrl',
-    function ( $rootScope, $scope, $state, $cookies, User ) {
-      console.log('typeof cookie: ', typeof $cookies.get('sessionId'));
+    function ( $rootScope, $scope, $state, $cookies, User, $filter ) {
       if ($cookies.get('sessionId') !== 'undefined') {
 
         var newTask = {};
-        $scope.myTasks = [];
+        var myTasks = [];
+
+        $scope.refreshTasks = function() {
+          User.userGetTasks()
+          .then(function (tasks) {
+            myTasks = tasks.data;
+
+            console.log('My Tasks: ', $scope.myTasks);
+            console.log('Refreshed tasks: ', tasks.data);
+          })
+        }
+
 
         $scope.addTask = function() {
-          newTask.date = $scope.date.date;
+          newTask.date = $filter('date')(new Date($scope.dateValue), 'MM/dd/yyyy'); //format date to 'MM/dd/yyyy' 
           newTask.time = $scope.data.time;
           newTask.task = $scope.data.addedTask;
           newTask.notes = $scope.notes;
@@ -19,8 +29,10 @@ angular.module( 'myApp' )
           console.log('New Task: ', newTask);
 
           User.userPostAddTask(newTask)
-          .then(function (tasks) {
-            User.userGetTasks();
+
+          .then(function () {
+            $scope.refreshTasks();
+        
             console.log('All tasks: ', tasks);
           })
         }
@@ -28,8 +40,6 @@ angular.module( 'myApp' )
         $scope.refreshTasks = function() {
           User.userGetTasks()
           .then(function (tasks) {
-          // todo: push new/updated tasks to tasks arr
-          // so we can display them.
           $scope.myTasks = tasks.data;
 
             console.log('My Tasks: ', $scope.myTasks);
