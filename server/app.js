@@ -121,7 +121,24 @@ app.post('/sitter/tasks', function (req, res) {
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function (employeeId) {
       if (employeeId) {
-        sitter.assignTask(req.body, employeeId)
+        sitter.assignTask(req.body.id, employeeId)
+          .then(function () {
+            sitter.getTasks(employeeId)
+              .then(function (tasks) {
+                res.send(200, tasks);
+              })
+          })
+      } else {
+        console.log('New task failed');
+      }
+    })
+})
+
+app.post('/sitter/complete', function (req, res) {
+  sitter.isAuthenticated(req.cookies.sessionId)
+    .then(function (employeeId) {
+      if (employeeId) {
+        sitter.completeTask(req.body.id)
           .then(function () {
             sitter.getTasks(employeeId)
               .then(function (tasks) {
