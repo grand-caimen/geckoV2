@@ -51,7 +51,7 @@
     "pg": "^4.4.3",
     "pg-promise": "^2.8.4",
     "uuid": "^2.0.1",
-    "bcrypt": "0.8.5"
+    "bcrypt": "^0.8.5"
   },
   "description": "A starter pack for creating websites hosting a LoopBack REST API presented using an AngularJS and Bootstrap (CSS) frontend.",
   "devDependencies": {
