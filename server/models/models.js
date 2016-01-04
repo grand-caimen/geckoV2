@@ -53,13 +53,17 @@ module.exports = {
           })
     },
 
-    addTask: function(task, user_id){
-      db.query('INSERT INTO tasks (user_id, date, time, task, notes, status) VALUES (' + "'" + user_id + "'," +  "'" + task.date + "'," + "'" + task.time + "'," + "'" + task.task + "'," + "'" + task.notes + "'," + "'new'" + ');')
-      .catch(function(error){
-        console.log('ERROR DETECTED', error);
-      })
+    addTask: function (task, user_id) {
+      db.query('SELECT address FROM users WHERE id=' + "'" + user_id + "'")
+        .then(function (userAddress) {
+          console.log(userAddress[0].address);
+          db.query('INSERT INTO tasks (user_id, date, time, task, notes, status, taskaddress) VALUES (' + "'" + user_id + "'," +  "'" + task.date + "'," + "'" + task.time + "'," + "'" + task.task + "'," + "'" + task.notes + "'," + "'new'," + "'"+ userAddress[0].address + "'" +');')
+          .catch(function(error){
+           console.log('ERROR DETECTED', error);
+          })
       .then(function() {
         console.log('task added');
+          })
       })
     },
 
