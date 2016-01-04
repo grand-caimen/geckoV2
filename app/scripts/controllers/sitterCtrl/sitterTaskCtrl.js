@@ -6,8 +6,8 @@ angular.module( 'myApp' )
     function ( $rootScope, $scope, $state, $cookies, Sitter ) {
       if ($cookies.get('sessionId') !== 'undefined') {
 
-        $scope.myTasks = [];
-        $scope.allTasks = [];
+        // $scope.myTasks = [];
+        // $scope.allTasks = [];
 
         // $scope.myTasksLoad = function() {
         //   Sitter.sitterGetTasks()
@@ -26,6 +26,8 @@ angular.module( 'myApp' )
             console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
             // todo: push new/updated tasks to tasks arr
             // so we can display them.
+            $scope.myTasks = [];
+            $scope.allTasks = [];
             tasks.data.forEach(function(task) {
               if (task.status === 'new') {
                 $scope.allTasks.push(task);
