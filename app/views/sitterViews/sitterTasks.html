@@ -5,7 +5,7 @@
   <ul>
     <li ng-repeat="thing in awesomeThings">{{ thing }}</li>
   </ul>
-  <p>installed.</p>
+  <p>installed.</p>;
 
   <h3><strong>Your requested tasks</strong></h3>
 
@@ -25,5 +25,24 @@
       <td>{{ task.notes }}</td>
     </tr>
   </table>
+
+    <h3><strong>All Avaialable tasks</strong></h3>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Task</th>
+            <th>Status</th>
+            <th>Time</th>
+            <th>Notes</th>
+        </tr>
+        <tr ng-repeat="task in allTasks" ng-if="$index < 10">
+            <td>{{ task.date }}</td>
+            <td>{{ task.task }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.time }}</td>
+            <td>{{ task.notes }}</td>
+        </tr>
+    </table>
  
 </div>

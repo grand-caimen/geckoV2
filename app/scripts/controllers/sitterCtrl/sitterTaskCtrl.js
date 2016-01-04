@@ -8,13 +8,24 @@ angular.module( 'myApp' )
 
         $scope.tasks = ['Current tasks'];
 
-        $scope.refreshTasks = function() {
+        $scope.myTasksLoad = function() {
           Sitter.sitterGetTasks()
           .then(function (tasks) {
             console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
           // todo: push new/updated tasks to tasks arr
           // so we can display them.
             $scope.myTasks = tasks.data;
+            console.log('tasks:.... ', tasks);
+          })
+        }
+
+        $scope.refreshTasks = function () {
+          Sitter.sitterAllGetTasks()
+          .then(function (tasks) {
+            console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
+            // todo: push new/updated tasks to tasks arr
+            // so we can display them.
+            $scope.allTasks = tasks.data;
             console.log('tasks:.... ', tasks);
           })
         }
@@ -27,6 +38,7 @@ angular.module( 'myApp' )
           })
         }
         $scope.refreshTasks();
+        $scope.myTasksLoad();
       } else {
         $state.go('sitterLogin');
       }

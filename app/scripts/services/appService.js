@@ -106,5 +106,15 @@ angular.module( 'myApp' )
     })
   };
 
+  Sitter.sitterAllGetTasks = function () {
+    return $http({
+      method: 'GET',
+      url: 'sitter/newtasks'
+    })
+    .then(function (res) {
+      console.log('tasks inside SitterTasks.getTasks factory: ', res);
+      return res;
+    })
+  };
   return Sitter;
 })
