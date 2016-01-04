@@ -11,9 +11,11 @@ angular.module( 'myApp' )
         $scope.refreshTasks = function() {
           Sitter.sitterGetTasks()
           .then(function (tasks) {
+            console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
           // todo: push new/updated tasks to tasks arr
           // so we can display them.
-            console.log('tasks: ', tasks);
+            $scope.myTasks = tasks.data;
+            console.log('tasks:.... ', tasks);
           })
         }
 
