@@ -85,7 +85,7 @@ app.post('/newtask', function (req, res) {
 
 /*---------------SITTERS--------------------*/
 
-app.post('sitter/signin', function (req, res) {
+app.post('/sitter/signin', function (req, res) {
   sitter.login(req.body)
     .then(function(sessionId) {
       console.log('applying sesssionId', sessionId)
@@ -94,7 +94,7 @@ app.post('sitter/signin', function (req, res) {
     })
 })
 
-app.post('sitter/signout', function (req, res ){
+app.post('/sitter/signout', function (req, res ){
   sitter.logout(req.cookies.sessionId)
     .then(function() {
       res.cookie('sessionId', undefined);
@@ -102,7 +102,7 @@ app.post('sitter/signout', function (req, res ){
     })
 })
 
-app.get('sitter/mytasks', function (req, res) {
+app.get('/sitter/mytasks', function (req, res) {
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function(data){
       if(data){
@@ -116,7 +116,7 @@ app.get('sitter/mytasks', function (req, res) {
     })
 })
 
-app.get('sitter/newtasks', function (req, res) {
+app.get('/sitter/newtasks', function (req, res) {
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function(employeeId){
       if (employeeId) {
