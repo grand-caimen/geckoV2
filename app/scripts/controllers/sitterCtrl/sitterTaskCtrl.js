@@ -27,20 +27,24 @@ angular.module( 'myApp' )
             // todo: push new/updated tasks to tasks arr
             // so we can display them.
             tasks.data.forEach(function(task) {
-              if (task.status === 'assigned') {
-                $scope.myTasks.push(task);
-              } else {
+              if (task.status === 'new') {
                 $scope.allTasks.push(task);
+              } else {
+                $scope.myTasks.push(task);
               }
             })
           })
         }
 
         $scope.chooseTask = function(index) {
-          var chosenTask = {};
-          chosenTask.taskId = $scope.allTasks[index].id;
-          console.log('task: ', $scope.allTasks[index])
           Sitter.sitterChooseTask($scope.allTasks[index])
+          .then(function() {
+            $scope.refreshTasks();
+          })
+        }
+
+        $scope.completeTask = function(index) {
+          Sitter.sitterCompleteTask($scope.myTasks[index])
           .then(function() {
             $scope.refreshTasks();
           })

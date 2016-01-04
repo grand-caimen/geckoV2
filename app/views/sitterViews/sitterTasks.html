@@ -1,14 +1,14 @@
 <h2 class='top-h2'>Hey, there {{ sitter.username }}!</h2>
 <div class="hero-unit">
-  <h1>Hey, there!</h1>
   <ul>
     <li ng-repeat="thing in awesomeThings">{{ thing }}</li>
   </ul>
 
-  <h3><strong>Your requested tasks</strong></h3>
+  <h3><strong>Your assigned tasks:</strong></h3>
 
   <table>
     <tr>
+      <th></th>
       <th>Date</th>
       <th>Task</th>
       <th>Status</th>
@@ -17,6 +17,7 @@
       <th>Address</th>
     </tr>
     <tr ng-repeat="task in myTasks" ng-if="$index < 10">
+      <td><button class='btn btn-complete btn-danger' ng-click='completeTask($index)'>Complete</button></td>
       <td>{{ task.date }}</td>
       <td>{{ task.task }}</td>
       <td>{{ task.status }}</td>
@@ -26,10 +27,11 @@
     </tr>
   </table>
 
-    <h3><strong>All Avaialable tasks</strong></h3>
+    <h3><strong>All available tasks:</strong></h3>
 
     <table>
         <tr>
+            <th></th>
             <th>Date</th>
             <th>Task</th>
             <th>Status</th>
