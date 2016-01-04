@@ -1,9 +1,9 @@
-<h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
-<div class="hero-unit">
-  <button ng-click='userLogout()' class="logout-btn">Logout</button>
-  <h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
-  <h1>Task manager</h1>
+<button ng-click='userLogout()' class="logout-btn">Logout</button>
+<h1>Task manager</h1>
 
+<h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
+
+<div class="hero-unit">
   <form ng-submit='addTask()'>
     <h2><strong>Add task</strong></h2>
     
@@ -34,21 +34,6 @@
   </form>
   
   <h3><strong>My Tasks</strong></h3>
-
-
-  <style>
-    table, th , td  {
-      border: none;
-      border-collapse: collapse;
-      padding: 5px;
-    }
-    table tr:nth-child(odd) {
-      background-color: #f1f1f1;
-    }
-    table tr:nth-child(even) {
-      background-color: #ffffff;
-    }
-  </style>
 
   <table>
     <tr>
