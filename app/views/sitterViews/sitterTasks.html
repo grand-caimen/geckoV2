@@ -1,8 +1,10 @@
 <div>
+    <button ng-click='sitterLogout()' class="logout-btn">Logout</button>
+</div>
+
+<div>
 <a href class="navbar-brand block m-t"><h1> HouzSit </h1></a>
 </div>
-<button ng-click='sitterLogout()' class="logout-btn">Logout</button>
-<h2 class='top-h2'>Hey there, {{ sitter.username }}!</h2>
 <div class='hero-unit'>
   <ul>
     <li ng-repeat="thing in awesomeThings">{{ thing }}</li>
@@ -44,7 +46,7 @@
             <th>Address</th>
         </tr>
         <tr ng-repeat="task in allTasks" ng-if="$index < 10">
-            <td><button class='btn btn-danger' ng-click='chooseTask($index)'>Pick</button></td>
+            <td><button class='btn btn-danger' ng-click='chooseTask($index)'>Choose</button></td>
             <td>{{ task.date }}</td>
             <td>{{ task.task }}</td>
             <td>{{ task.status }}</td>
