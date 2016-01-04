@@ -6,18 +6,19 @@ angular.module( 'myApp' )
     function ( $rootScope, $scope, $state, $cookies, Sitter ) {
       if ($cookies.get('sessionId') !== 'undefined') {
 
-        $scope.tasks = ['Current tasks'];
+        $scope.myTasks = [];
+        $scope.allTasks = [];
 
-        $scope.myTasksLoad = function() {
-          Sitter.sitterGetTasks()
-          .then(function (tasks) {
-            console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
-          // todo: push new/updated tasks to tasks arr
-          // so we can display them.
-            $scope.myTasks = tasks.data;
-            console.log('tasks:.... ', tasks);
-          })
-        }
+        // $scope.myTasksLoad = function() {
+        //   Sitter.sitterGetTasks()
+        //   .then(function (tasks) {
+        //     console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
+        //   // todo: push new/updated tasks to tasks arr
+        //   // so we can display them.
+        //     $scope.myTasks = tasks.data;
+        //     console.log('tasks:.... ', tasks);
+        //   })
+        // }
 
         $scope.refreshTasks = function () {
           Sitter.sitterAllGetTasks()
@@ -25,8 +26,23 @@ angular.module( 'myApp' )
             console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
             // todo: push new/updated tasks to tasks arr
             // so we can display them.
-            $scope.allTasks = tasks.data;
-            console.log('tasks:.... ', tasks);
+            tasks.data.forEach(function(task) {
+              if (task.status === 'assigned') {
+                $scope.myTasks.push(task);
+              } else {
+                $scope.allTasks.push(task);
+              }
+            })
+          })
+        }
+
+        $scope.chooseTask = function(index) {
+          var chosenTask = {};
+          chosenTask.taskId = $scope.allTasks[index].id;
+          console.log('task: ', $scope.allTasks[index])
+          Sitter.sitterChooseTask($scope.allTasks[index])
+          .then(function() {
+            $scope.refreshTasks();
           })
         }
 
@@ -38,7 +54,7 @@ angular.module( 'myApp' )
           })
         }
         $scope.refreshTasks();
-        $scope.myTasksLoad();
+        // $scope.myTasksLoad();
       } else {
         $state.go('sitterLogin');
       }

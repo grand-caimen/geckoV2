@@ -24,7 +24,6 @@
     </tr>
   </table>
 
-<<<<<<< HEAD
     <h3><strong>All Avaialable tasks</strong></h3>
 
     <table>
@@ -36,6 +35,7 @@
             <th>Notes</th>
         </tr>
         <tr ng-repeat="task in allTasks" ng-if="$index < 10">
+            <td><button class='btn btn-danger' ng-click='chooseTask($index)'>Pick</button></td>
             <td>{{ task.date }}</td>
             <td>{{ task.task }}</td>
             <td>{{ task.status }}</td>
@@ -43,7 +43,5 @@
             <td>{{ task.notes }}</td>
         </tr>
     </table>
- 
-=======
->>>>>>> fixed sitter redirect when sitterSignUp
+
 </div>

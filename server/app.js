@@ -117,12 +117,13 @@ app.get('/sitter/tasks', function (req, res) {
 })
 
 app.post('/sitter/tasks', function (req, res) {
+  console.log('req.data test: ', req.body);
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function (employeeId) {
       if (employeeId) {
-        sitter.assignTask(req.data, employeeId) 
+        sitter.assignTask(req.body, employeeId)
           .then(function () {
-            sitter.getTasks(employeeId) 
+            sitter.getTasks(employeeId)
               .then(function (tasks) {
                 res.send(200, tasks);
               })
