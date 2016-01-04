@@ -7,18 +7,18 @@ angular.module( 'myApp' )
       if ($cookies.get('sessionId') !== 'undefined') {
 
         var newTask = {};
-        var myTasks = [];
+        // var myTasks = [];
 
+      
         $scope.refreshTasks = function() {
           User.userGetTasks()
           .then(function (tasks) {
-            myTasks = tasks.data;
+          $scope.myTasks = tasks.data;
 
             console.log('My Tasks: ', $scope.myTasks);
             console.log('Refreshed tasks: ', tasks.data);
           })
         }
-
 
         $scope.addTask = function() {
           newTask.date = $filter('date')(new Date($scope.dateValue), 'MM/dd/yyyy'); //format date to 'MM/dd/yyyy' 
@@ -37,15 +37,6 @@ angular.module( 'myApp' )
           })
         }
 
-        $scope.refreshTasks = function() {
-          User.userGetTasks()
-          .then(function (tasks) {
-          $scope.myTasks = tasks.data;
-
-            console.log('My Tasks: ', $scope.myTasks);
-            console.log('Refreshed tasks: ', tasks.data);
-          })
-        }
 
         $scope.userLogout = function() {
           User.userPostLogout()
