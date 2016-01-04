@@ -136,8 +136,8 @@ module.exports = {
       })
     },
 
-    myTasks: function (employee_id) {
-      return db.query('SELECT * FROM tasks WHERE employee_id = '+ "'" + employee_id + "'")
+    getTasks: function (employee_id) {
+      return db.query('SELECT * FROM tasks WHERE employee_id = '+ "'" + employee_id + "' OR status = 'new'" )
         .then(function(data){
           console.log(data);
           return data;

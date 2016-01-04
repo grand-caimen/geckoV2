@@ -102,16 +102,33 @@ app.post('/sitter/signout', function (req, res ){
     })
 })
 
-app.get('/sitter/mytasks', function (req, res) {
+app.get('/sitter/tasks', function (req, res) {
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function(data){
       if(data){
-        sitter.myTasks(data)
+        sitter.getTasks(data)
           .then(function (tasks){
             res.send(200, tasks);
           });
       } else {
         console.log('GET Tasks Failed or whatever');
+      }
+    })
+})
+
+app.post('/sitter/tasks', function (req, res) {
+  sitter.isAuthenticated(req.cookies.sessionId)
+    .then(function (employeeId) {
+      if (employeeId) {
+        sitter.assignTask(req.data, employeeId) 
+          .then(function () {
+            sitter.getTasks(employeeId) 
+              .then(function (tasks) {
+                res.send(200, tasks);
+              })
+          })
+      } else {
+        console.log('New task failed');
       }
     })
 })
