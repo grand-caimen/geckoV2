@@ -43,7 +43,7 @@
       <th>Time</th>
       <th>Notes</th>
     </tr>
-    <tr ng-repeat="task in myTasks">
+    <tr ng-repeat="task in myTasks" ng-if="$index < 10">
       <td>{{ task.date }}</td>
       <td>{{ task.task }}</td>
       <td>{{ task.status }}</td>
