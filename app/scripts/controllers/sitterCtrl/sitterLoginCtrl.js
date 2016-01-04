@@ -18,7 +18,7 @@ angular.module( 'myApp' )
           if (res) {
             $state.go('sitterTasks');
           } else {
-            $scope.authError = 'Invalid username/password'
+            $scope.authError = 'Invalid username/password';
           }
         });
       };
