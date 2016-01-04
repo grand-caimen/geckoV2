@@ -1,7 +1,11 @@
-<button ng-click='userLogout()' class="logout-btn">Logout</button>
-<h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
+<div>
+<a href class="navbar-brand block m-t"><h1> HouzSit </h1></a>
+</div>
 
-<div class="hero-unit">
+<button ng-click='userLogout()' class="logout-btn">Logout</button>
+<h2 class='top-h2'>Hey there, {{ user.username }}!</h2>
+
+<div class="hero-unit-user">
   <form ng-submit='addTask()'>
     <h2><strong>Add task</strong></h2>
 
@@ -27,8 +31,9 @@
     <tt>Selected task: {{data.addedTask}}</tt>
 
     <h4>Notes</h4>
-    <textarea name='notes' ng-model='notes' type="text" rows=6 cols=57 name="notes" placeholder='Please enter special instructions, if any'></textarea>
-    <button class='btn btn-lg btn-primary btn-block'>Submit</button>
+    <textarea name='notes' ng-model='notes' type="text" rows=6 cols=57 name="notes" placeholder='Please enter special instructions, if any'></textarea><br>
+    <button class='btn btn-lg btn-primary'>Submit</button>
+
   </form>
 
   <h3><strong>My Tasks</strong></h3>

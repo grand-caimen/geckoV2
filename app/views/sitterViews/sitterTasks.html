@@ -1,13 +1,16 @@
+<div>
+<a href class="navbar-brand block m-t"><h1> HouzSit </h1></a>
+</div>
 <button ng-click='sitterLogout()' class="logout-btn">Logout</button>
-<h2 class='top-h2'>Hey, there {{ sitter.username }}!</h2>
-<div class="hero-unit">
+<h2 class='top-h2'>Hey there, {{ sitter.username }}!</h2>
+<div class='hero-unit'>
   <ul>
     <li ng-repeat="thing in awesomeThings">{{ thing }}</li>
   </ul>
 
   <h3><strong>Your assigned tasks:</strong></h3>
 
-  <table>
+  <table class='table table-striped table-bordered table-condensed .col-md-2'>
     <tr>
       <th></th>
       <th>Date</th>
@@ -30,7 +33,7 @@
 
     <h3><strong>All available tasks:</strong></h3>
 
-    <table>
+    <table class='table table-striped table-bordered table-condensed'>
         <tr>
             <th></th>
             <th>Date</th>
