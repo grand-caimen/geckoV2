@@ -131,5 +131,19 @@ angular.module( 'myApp' )
       return res;
     })
   }
+
+    Sitter.sitterCompleteTask = function(task) {
+
+    console.log('task: ', task);
+    return $http({
+      method: 'POST',
+      url: 'sitter/complete',
+      data: task
+    })
+    .then(function (res) {
+      console.log('task post to backend: ', res);
+      return res;
+    })
+  }
   return Sitter;
 })
