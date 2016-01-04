@@ -44,7 +44,7 @@ angular.module( 'myApp', [
         .state('sitterTasks', {
           url: '/sittertasks',
           templateUrl: 'views/sitterViews/sitterTasks.html',
-          controller: 'SitterTaskCtrl'
+          controller: 'SitterTasksCtrl'
         })
     }
   )
