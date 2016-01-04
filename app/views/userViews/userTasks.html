@@ -1,13 +1,14 @@
 <h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
 <div class="hero-unit">
   <button ng-click='userLogout()' class="logout-btn">Logout</button>
+  <h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
   <h1>Task manager</h1>
 
   <form ng-submit='addTask()'>
     <h2><strong>Add task</strong></h2>
     
     <h4>Select date</h4>
-    <input type='date' ng-model='date.date' required=''><br>
+    <input type='date' format='MM/dd/yyyy' ng-model='date.date' required=''><br>
 
     <h4>Select time</h4>
     <select name='time' id='time' ng-model='data.time'>
@@ -33,8 +34,18 @@
   </form>
   
   <h3><strong>My Tasks</strong></h3>
-  <ul>
-    <li ng-repeat="task in myTasks">{{ task.date}}, {{ task.task}}, {{ task.status}}, {{ task.time}}, {{ task.employee_id}}  </li>
-  </ul>
-
-  </div>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Task</th>
+      <th>Status</th>
+      <th>Time</th>
+    </tr>
+    <tr ng-repeat="task in myTasks">
+      <td>{{ task.date }}</td>
+      <td>{{ task.task }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.time }}</td>
+    </tr>
+  </table>
+</div>
