@@ -2,22 +2,31 @@
 
 angular.module( 'myApp' )
 
-.controller( 'SitterSignUpCtrl',
-    function ( $scope, Sitter ) {
-      var info = {};
+.controller( 'UserSignUpCtrl',
+    function ( $scope, $rootScope, $state, User ) {
+      // var info = {};
 
-      $scope.sitterSignUp = function() {
-        info.username = $scope.username;
-        info.password = $scope.password;
-        info.name = $scope.name;
-        info.email = $scope.email;
-        info.address = $scope.address;
-        info.phone = $scope.phone;
+      $scope.user = {
+        username: undefined,
+        passowrd: undefined,
+        name: undefined,
+        email: undefined,
+        address: undefined,
+        phone: undefined
+      };
 
-        console.log('user: ', info);
-        //Sitter.sitterPostSignUp doesn't exists yet..
-        Sitter.sitterPostSignUp(info)
+      $scope.userSignUp = function() {
+        // info.username = $scope.username;
+        // info.password = $scope.password;
+        // info.name = $scope.name;
+        // info.email = $scope.email;
+        // info.address = $scope.address;
+        // info.phone = $scope.phone;
+
+        console.log('user: ', $scope.user);
+        User.userPostSignUp($scope.user)
         .then(function () {
+          $rootScope.user = $scope.user;
           $state.go('userTasks');
         })
       }

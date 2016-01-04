@@ -9,7 +9,7 @@ angular.module( 'myApp' )
         var newTask = {};
         // var myTasks = [];
 
-      
+
         $scope.refreshTasks = function() {
           User.userGetTasks()
           .then(function (tasks) {
@@ -21,7 +21,7 @@ angular.module( 'myApp' )
         }
 
         $scope.addTask = function() {
-          newTask.date = $filter('date')(new Date($scope.dateValue), 'MM/dd/yyyy'); //format date to 'MM/dd/yyyy' 
+          newTask.date = $filter('date')(new Date($scope.dateValue), 'MM/dd/yyyy'); //format date to 'MM/dd/yyyy'
           newTask.time = $scope.data.time;
           newTask.task = $scope.data.addedTask;
           newTask.notes = $scope.notes;
@@ -32,7 +32,7 @@ angular.module( 'myApp' )
 
           .then(function () {
             $scope.refreshTasks();
-        
+
             console.log('All tasks: ', tasks);
           })
         }
