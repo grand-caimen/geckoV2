@@ -9,7 +9,7 @@
     <h4>Select date</h4>
     
     <h4>Select time</h4>
-    <select name='time' ng-model='data.time'>
+    <select name='time' id='time' ng-model='data.time'>
       <option value="morning">Morning</option>
       <option value="afternoon">Afternoon</option>
       <option value="evening">Evening</option>
@@ -17,23 +17,23 @@
     <tt>Selected time: {{data.time}}</tt>
 
     <h4>Tasks</strong></h4>
-    <select name='task' id='task' ng-model='data.task'>
+    <select name='addedTask' id='addedTask' ng-model='data.addedTask'>
       <option value="move Trash">Move trash</option>
       <option value="check mail">Check mail</option>
       <option value="feed pet">Feed pet</option>
       <option value="move car">Move car</option>
       <option value="water plants">Water Plants</option>
     </select><br>
-    <tt>Selected task: {{data.task}}</tt>
+    <tt>Selected task: {{data.addedTask}}</tt>
 
     <h4>Notes</h4>
     <textarea name='notes' ng-model='notes' type="text" rows=6 cols=57 name="notes" placeholder='Please enter special instructions, if any'></textarea>
     <button class='btn btn-lg btn-primary btn-block'>Submit</button>
   </form>
-
+  
   <h3><strong>My Tasks</strong></h3>
   <ul>
-    <li ng-repeat="task in myTasks">{{ task }}</li>
+    <li ng-repeat="task in myTasks">{{ task.date}}, {{ task.task}}, {{ task.status}}, {{ task.time}}, {{ task.employee_id}}  </li>
   </ul>
 
-</div>
+  </div>

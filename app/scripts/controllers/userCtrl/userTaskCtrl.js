@@ -13,7 +13,7 @@ angular.module( 'myApp' )
         $scope.addTask = function() {
           newTask.date = $scope.date;
           newTask.time = $scope.data.time;
-          newTask.task = $scope.data.task;
+          newTask.task = $scope.data.addedTask;
           newTask.notes = $scope.notes;
 
           console.log('New Task: ', newTask);
@@ -30,9 +30,10 @@ angular.module( 'myApp' )
           .then(function (tasks) {
           // todo: push new/updated tasks to tasks arr
           // so we can display them.
-          $scope.myTasks = tasks.data
+          $scope.myTasks = tasks.data;
 
-            console.log('Refreshed tasks: ', tasks);
+            console.log('My Tasks: ', $scope.myTasks);
+            console.log('Refreshed tasks: ', tasks.data);
           })
         }
 
