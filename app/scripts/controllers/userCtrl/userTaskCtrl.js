@@ -11,7 +11,7 @@ angular.module( 'myApp' )
         $scope.myTasks = [];
 
         $scope.addTask = function() {
-          newTask.date = $scope.date;
+          newTask.date = $scope.date.date;
           newTask.time = $scope.data.time;
           newTask.task = $scope.data.addedTask;
           newTask.notes = $scope.notes;
