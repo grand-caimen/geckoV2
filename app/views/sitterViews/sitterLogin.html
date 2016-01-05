@@ -9,11 +9,13 @@
   </form>
 </div>
 -->
-
 <div class="container w-xxl w-auto-xs" ng-controller="SitterLoginCtrl" >
-  <a href class="navbar-brand block m-t"><h1> HouzSit </h1></a>
+  <a href class="navbar-brand block m-t login"><div class="house">
+
+  <h1 class="index houz"> HouzSit </h1>
+  </div></a>
   <div class="m-b-lg">
-    <h3 class="navbar-brand block m-t" >Sitter Login</h3>
+    <h3 class="navbar-brand block m-t index login">Sitter Login</h3>
   </div>
   <div class="m-b-lg">
     <form name="form" class="form-validation">
@@ -21,19 +23,19 @@
           {{ authError }}
       </div>
       <div class="list-group list-group-sm">
-        <div class="list-group-item">
+        <div class="list-group-item login">
           <input type="test" placeholder="Username" class="form-control no-border" ng-model="sitter.username" required>
         </div>
-        <div class="list-group-item">
+        <div class="list-group-item login">
            <input type="password" placeholder="Password" class="form-control no-border" ng-model="sitter.password" required>
         </div>
       </div>
       <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="sitterLogin()" ng-disabled='form.$invalid'>Log in</button>
       <!-- <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">Forgot password?</a></div> -->
       <div class="line line-dashed"></div>
-      <p class="text-center"><small>Want to join the sitter team?</small></p>
-      <a ui-sref="sitterSignUp" class="btn btn-lg btn-default btn-block">Sitter Signup</a>
-      <div class="text-center m-t m-b"><a ui-sref="userLogin">User login</a></div>
+      <p class="text-center index"><small>Want to join the sitter team?</small></p>
+      <a ui-sref="sitterSignUp" class="btn btn-lg btn-default btn-block index login">Sitter Signup</a>
+      <div class="text-center m-t m-b index"><a ui-sref="userLogin">User login</a></div>
     </form>
   </div>
 </div>
