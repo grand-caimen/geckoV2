@@ -1,8 +1,27 @@
 body {
-  background: #29a329;
+
+
+  background: url('image1highres.jpg') no-repeat top center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
+
+/*.home {
+
+  background-image: url('image1highres.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}*/
+
+
 
 .top-h2 {
   text-align: center;
@@ -11,6 +30,23 @@ body {
 
 .logout-btn {
   float: right;
+}
+
+.index {
+  color: white;
+}
+
+.login {
+  opacity: .85;
+}
+
+.houz {
+  color: black;
+}
+
+.house {
+  background-color: white;
+  opacity: .95;
 }
 
 .btn.btn-complete {
@@ -32,6 +68,7 @@ body {
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
+  opacity: .85;
 }
 
 .hero-unit-user {
@@ -43,6 +80,7 @@ body {
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
+  opacity: .85;
 }
 
 .hero-unit h1 {

@@ -33,7 +33,7 @@ angular.module( 'myApp' )
           .then(function () {
             $scope.refreshTasks();
 
-            console.log('All tasks: ', tasks);
+            console.log('All tasks: ');
           })
         }
 
