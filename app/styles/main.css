@@ -50,6 +50,23 @@ body {
   opacity: .95;
 }
 
+.index {
+  color: white;
+}
+
+.login {
+  opacity: .85;
+}
+
+.houz {
+  color: black;
+}
+
+.house {
+  background-color: white;
+  opacity: .95;
+}
+
 .btn.btn-complete {
   background-color: green;
   color: white;
