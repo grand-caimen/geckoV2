@@ -6,16 +6,49 @@ angular.module( 'myApp' )
     function ( $rootScope, $scope, $state, $cookies, Sitter ) {
       if ($cookies.get('sessionId') !== 'undefined') {
 
-        $scope.tasks = ['Current tasks'];
+        // $scope.myTasks = [];
+        // $scope.allTasks = [];
 
-        $scope.refreshTasks = function() {
-          Sitter.sitterGetTasks()
+        // $scope.myTasksLoad = function() {
+        //   Sitter.sitterGetTasks()
+        //   .then(function (tasks) {
+        //     console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
+        //   // todo: push new/updated tasks to tasks arr
+        //   // so we can display them.
+        //     $scope.myTasks = tasks.data;
+        //     console.log('tasks:.... ', tasks);
+        //   })
+        // }
+
+        $scope.refreshTasks = function () {
+          Sitter.sitterAllGetTasks()
           .then(function (tasks) {
             console.log('tasks:....sfdfgdgdsggdfgdgsd ', tasks);
-          // todo: push new/updated tasks to tasks arr
-          // so we can display them.
-            $scope.myTasks = tasks.data;
-            console.log('tasks:.... ', tasks);
+            // todo: push new/updated tasks to tasks arr
+            // so we can display them.
+            $scope.myTasks = [];
+            $scope.allTasks = [];
+            tasks.data.forEach(function(task) {
+              if (task.status === 'new') {
+                $scope.allTasks.push(task);
+              } else {
+                $scope.myTasks.push(task);
+              }
+            })
+          })
+        }
+
+        $scope.chooseTask = function(index) {
+          Sitter.sitterChooseTask($scope.allTasks[index])
+          .then(function() {
+            $scope.refreshTasks();
+          })
+        }
+
+        $scope.completeTask = function(index) {
+          Sitter.sitterCompleteTask($scope.myTasks[index])
+          .then(function() {
+            $scope.refreshTasks();
           })
         }
 
@@ -27,6 +60,7 @@ angular.module( 'myApp' )
           })
         }
         $scope.refreshTasks();
+        // $scope.myTasksLoad();
       } else {
         $state.go('sitterLogin');
       }

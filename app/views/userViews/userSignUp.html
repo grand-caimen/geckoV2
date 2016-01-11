@@ -1,13 +1,13 @@
-<h2 class="top-h2">Welcome to handy guy!</h2>
-<div class="hero-unit">
+<h2 class="top-h2 index login home">Welcome to HouzSit!</h2>
+<div class="container w-xxl w-auto-xs index home login">
   <h1>Sign up</h1><br>
   <form ng-submit='userSignUp()'>
-    <input type='text' class='form-control' ng-model='name' placeholder='First and last name' required=''><br>
-    <input type='text' class='form-control' ng-model='username' placeholder='Enter user name' required=''><br>
-    <input type='email' class='form-control' ng-model='email' placeholder='Email address' autofocus='' required=''><br>
-    <input type='address' class='form-control' ng-model='address' placeholder='Address' required=''><br>
-    <input type='phone' class='form-control' ng-model='phone' placeholder='Phone number' required=''><br>
-    <input type='password' class='form-control' ng-model='password' placeholder='Password' required=''><br>
+    <input type='text' class='form-control' ng-model='user.name' placeholder='First and last name' required=''><br>
+    <input type='text' class='form-control' ng-model='user.username' placeholder='Enter user name' required=''><br>
+    <input type='email' class='form-control' ng-model='user.email' placeholder='Email address' autofocus='' required=''><br>
+    <input type='address' class='form-control' ng-model='user.address' placeholder='Address' required=''><br>
+    <input type='phone' class='form-control' ng-model='user.phone' placeholder='Phone number' required=''><br>
+    <input type='password' class='form-control' ng-model='user.password' placeholder='Password' required=''><br>
     <!-- <input type='password' class='form-control' name='verification' placeholder='Password' required='' match='verification' match='password'><br> -->
     <button class='btn btn-lg btn-primary btn-block'>Submit</button>
   </form>

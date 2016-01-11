@@ -72,6 +72,7 @@ angular.module( 'myApp' )
   var Sitter = {};
 
   Sitter.sitterPostLogin = function(sitter) {
+    console.log('sitter test :', sitter);
     return $http({
       method: 'POST',
       url: 'sitter/signin',
@@ -106,5 +107,43 @@ angular.module( 'myApp' )
     })
   };
 
+  Sitter.sitterAllGetTasks = function () {
+    return $http({
+      method: 'GET',
+      url: 'sitter/tasks'
+    })
+    .then(function (res) {
+      console.log('tasks inside SitterTasks.getTasks factory: ', res);
+      return res;
+    })
+  };
+
+  Sitter.sitterChooseTask = function(task) {
+
+    console.log('task: ', task);
+    return $http({
+      method: 'POST',
+      url: 'sitter/tasks',
+      data: task
+    })
+    .then(function (res) {
+      console.log('task post to backend: ', res);
+      return res;
+    })
+  }
+
+    Sitter.sitterCompleteTask = function(task) {
+
+    console.log('task: ', task);
+    return $http({
+      method: 'POST',
+      url: 'sitter/complete',
+      data: task
+    })
+    .then(function (res) {
+      console.log('task post to backend: ', res);
+      return res;
+    })
+  }
   return Sitter;
 })

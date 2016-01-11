@@ -1,8 +1,27 @@
 body {
-  background: #fafafa;
+
+
+  background: url('image1highres.jpg') no-repeat top center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
+
+/*.home {
+
+  background-image: url('image1highres.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}*/
+
+
 
 .top-h2 {
   text-align: center;
@@ -11,6 +30,46 @@ body {
 
 .logout-btn {
   float: right;
+  margin-right:20px;
+}
+
+.index {
+  color: white;
+}
+
+.login {
+  opacity: .85;
+}
+
+.houz {
+  color: black;
+}
+
+.house {
+  background-color: white;
+  opacity: .95;
+}
+
+.index {
+  color: white;
+}
+
+.login {
+  opacity: .85;
+}
+
+.houz {
+  color: black;
+}
+
+.house {
+  background-color: white;
+  opacity: .95;
+}
+
+.btn.btn-complete {
+  background-color: green;
+  color: white;
 }
 
 .home-btns {
@@ -20,13 +79,26 @@ body {
 
 .hero-unit {
   margin: 50px auto 0 auto;
-  width: 600px;
+  width: inherit;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
+  opacity: .85;
+}
+
+.hero-unit-user {
+  margin: 50px auto 0 auto;
+  width: 700px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 60px;
+  opacity: .85;
 }
 
 .hero-unit h1 {

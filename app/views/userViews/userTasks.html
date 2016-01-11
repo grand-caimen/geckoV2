@@ -1,12 +1,14 @@
+<div>
+<a href class="navbar-brand block m-t index"><h1> HouzSit </h1></a>
+</div>
+
 <button ng-click='userLogout()' class="logout-btn">Logout</button>
-<h1>Task manager</h1>
+<h2 class='top-h2 index'>Hey there, {{ user.username }}!</h2>
 
-<h2 class='top-h2'>Hey, there {{ user.username }}!</h2>
-
-<div class="hero-unit">
+<div class="hero-unit-user" style='overflow:scroll; height:550px;'>
   <form ng-submit='addTask()'>
     <h2><strong>Add task</strong></h2>
-    
+
     <h4>Select date</h4>
     <input type='date' format='MM/dd/yyyy' ng-model='dateValue' required=''><br>
 
@@ -16,7 +18,6 @@
       <option value="afternoon">Afternoon</option>
       <option value="evening">Evening</option>
     </select><br>
-    <tt>Selected time: {{data.time}}</tt>
 
     <h4>Tasks</strong></h4>
     <select name='addedTask' id='addedTask' ng-model='data.addedTask'>
@@ -26,13 +27,13 @@
       <option value="move car">Move car</option>
       <option value="water plants">Water Plants</option>
     </select><br>
-    <tt>Selected task: {{data.addedTask}}</tt>
 
     <h4>Notes</h4>
-    <textarea name='notes' ng-model='notes' type="text" rows=6 cols=57 name="notes" placeholder='Please enter special instructions, if any'></textarea>
-    <button class='btn btn-lg btn-primary btn-block'>Submit</button>
+    <textarea name='notes' ng-model='notes' type="text" rows=6 cols=57 name="notes" placeholder='Please enter special instructions, if any'></textarea><br>
+    <button class='btn btn-lg btn-primary'>Submit</button>
+
   </form>
-  
+
   <h3><strong>My Tasks</strong></h3>
 
   <table>

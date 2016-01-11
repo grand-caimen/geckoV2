@@ -85,7 +85,7 @@ app.post('/newtask', function (req, res) {
 
 /*---------------SITTERS--------------------*/
 
-app.post('sitter/signin', function (req, res) {
+app.post('/sitter/signin', function (req, res) {
   sitter.login(req.body)
     .then(function(sessionId) {
       console.log('applying sesssionId', sessionId)
@@ -94,7 +94,7 @@ app.post('sitter/signin', function (req, res) {
     })
 })
 
-app.post('sitter/signout', function (req, res ){
+app.post('/sitter/signout', function (req, res ){
   sitter.logout(req.cookies.sessionId)
     .then(function() {
       res.cookie('sessionId', undefined);
@@ -102,11 +102,11 @@ app.post('sitter/signout', function (req, res ){
     })
 })
 
-app.get('sitter/mytasks', function (req, res) {
+app.get('/sitter/tasks', function (req, res) {
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function(data){
       if(data){
-        sitter.myTasks(data)
+        sitter.getTasks(data)
           .then(function (tasks){
             res.send(200, tasks);
           });
@@ -116,7 +116,42 @@ app.get('sitter/mytasks', function (req, res) {
     })
 })
 
-app.get('sitter/newtasks', function (req, res) {
+app.post('/sitter/tasks', function (req, res) {
+  console.log('req.data test: ', req.body);
+  sitter.isAuthenticated(req.cookies.sessionId)
+    .then(function (employeeId) {
+      if (employeeId) {
+        sitter.assignTask(req.body.id, employeeId)
+          .then(function () {
+            sitter.getTasks(employeeId)
+              .then(function (tasks) {
+                res.send(200, tasks);
+              })
+          })
+      } else {
+        console.log('New task failed');
+      }
+    })
+})
+
+app.post('/sitter/complete', function (req, res) {
+  sitter.isAuthenticated(req.cookies.sessionId)
+    .then(function (employeeId) {
+      if (employeeId) {
+        sitter.completeTask(req.body.id)
+          .then(function () {
+            sitter.getTasks(employeeId)
+              .then(function (tasks) {
+                res.send(200, tasks);
+              })
+          })
+      } else {
+        console.log('New task failed');
+      }
+    })
+})
+
+app.get('/sitter/newtasks', function (req, res) {
   sitter.isAuthenticated(req.cookies.sessionId)
     .then(function(employeeId){
       if (employeeId) {

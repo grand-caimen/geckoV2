@@ -1,29 +1,57 @@
-<h2 class='top-h2'>Hey, there {{ sitter.username }}!</h2>
-<div class="hero-unit">
-  <h1>Hey, there!</h1>
-  <p>Your requested tasks:</p>
+<div>
+<a href class="navbar-brand block m-t index"><h1> HouzSit </h1></a>
+</div>
+<button ng-click='sitterLogout()' class="logout-btn">Logout</button>
+<h2 class='top-h2 index'>Hey there, {{ sitter.username }}!</h2>
+<div class='hero-unit' style="width: 75%">
   <ul>
     <li ng-repeat="thing in awesomeThings">{{ thing }}</li>
   </ul>
-  <p>installed.</p>
 
-  <h3><strong>Your requested tasks</strong></h3>
+  <h3><strong>Your assigned tasks:</strong></h3>
 
-  <table>
+  <table class='table table-striped table-bordered table-condensed .col-md-2'>
     <tr>
+      <th></th>
       <th>Date</th>
       <th>Task</th>
       <th>Status</th>
       <th>Time</th>
       <th>Notes</th>
+      <th>Address</th>
     </tr>
     <tr ng-repeat="task in myTasks" ng-if="$index < 10">
+      <td><button class='btn btn-complete' ng-click='completeTask($index)'>Complete</button></td>
       <td>{{ task.date }}</td>
       <td>{{ task.task }}</td>
       <td>{{ task.status }}</td>
       <td>{{ task.time }}</td>
       <td>{{ task.notes }}</td>
+      <td>{{ task.taskaddress }}</td>
     </tr>
   </table>
- 
+
+    <h3><strong>All available tasks:</strong></h3>
+
+    <table class='table table-striped table-bordered table-condensed'>
+        <tr>
+            <th></th>
+            <th>Date</th>
+            <th>Task</th>
+            <th>Status</th>
+            <th>Time</th>
+            <th>Notes</th>
+            <th>Address</th>
+        </tr>
+        <tr ng-repeat="task in allTasks" ng-if="$index < 10">
+            <td><button class='btn btn-danger' ng-click='chooseTask($index)'>Choose</button></td>
+            <td>{{ task.date }}</td>
+            <td>{{ task.task }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.time }}</td>
+            <td>{{ task.notes }}</td>
+            <td>{{ task.taskaddress }}</td>
+        </tr>
+    </table>
+
 </div>

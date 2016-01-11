@@ -25,7 +25,6 @@ Features to add:
 Users will be able to create an account and log in.  Upon doing so they should have to ability to create new tasks and see all they're previously created tasks.
 
 Features to add:
-- Salt/hash passwords before storage in the DB.
 - Add the ability to recreate tasks from previous tasks.
 - Input multiple tasks at once (trips added as a whole).
 

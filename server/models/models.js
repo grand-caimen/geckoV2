@@ -1,13 +1,15 @@
 var db = require ('./../db/sqlscript.js');
 var uuid = require('uuid');
-
+var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 module.exports = {
   user: {
     newUser: function (user) {
+      var hash = bcrypt.hashSync(user.password, salt);
       return db.query("SELECT username FROM users WHERE username = " + "'" + user.username + "'")
         .then(function (data) {
           if (!data.length) {
-            db.query('INSERT INTO users (username,password,name,address,email,phone) VALUES ('+ "'" + user.username + "'," + "'" + user.password + "'," + "'" + user.name + "'," + "'" + user.address + "'," + "'" + user.email + "'," +  "'" + user.phone + "'" + ');')
+            db.query('INSERT INTO users (username,password,name,address,email,phone) VALUES ('+ "'" + user.username + "'," + "'" + hash + "'," + "'" + user.name + "'," + "'" + user.address + "'," + "'" + user.email + "'," +  "'" + user.phone + "'" + ');')
               .then(function(data) {
                 console.log('user created')
               })
@@ -22,7 +24,7 @@ module.exports = {
     },
 
     login: function (userLogin) {
-      var password = userLogin.password;
+      var password = bcrypt.hashSync(userLogin.password,salt);
       var username = userLogin.username;
       var sessionId = uuid();
       var isAuth = false;
@@ -53,13 +55,17 @@ module.exports = {
           })
     },
 
-    addTask: function(task, user_id){
-      db.query('INSERT INTO tasks (user_id, date, time, task, notes, status) VALUES (' + "'" + user_id + "'," +  "'" + task.date + "'," + "'" + task.time + "'," + "'" + task.task + "'," + "'" + task.notes + "'," + "'new'" + ');')
-      .catch(function(error){
-        console.log('ERROR DETECTED', error);
-      })
+    addTask: function (task, user_id) {
+      db.query('SELECT address FROM users WHERE id=' + "'" + user_id + "'")
+        .then(function (userAddress) {
+          console.log(userAddress[0].address);
+          db.query('INSERT INTO tasks (user_id, date, time, task, notes, status, taskaddress) VALUES (' + "'" + user_id + "'," +  "'" + task.date + "'," + "'" + task.time + "'," + "'" + task.task + "'," + "'" + task.notes + "'," + "'new'," + "'"+ userAddress[0].address + "'" +');')
+          .catch(function(error){
+           console.log('ERROR DETECTED', error);
+          })
       .then(function() {
         console.log('task added');
+          })
       })
     },
 
@@ -136,8 +142,8 @@ module.exports = {
       })
     },
 
-    myTasks: function (employee_id) {
-      return db.query('SELECT * FROM tasks WHERE employee_id = '+ "'" + employee_id + "'")
+    getTasks: function (employee_id) {
+      return db.query('SELECT * FROM tasks WHERE employee_id = '+ "'" + employee_id + "' OR status = 'new'" )
         .then(function(data){
           console.log(data);
           return data;
@@ -148,7 +154,7 @@ module.exports = {
     },
 
     pendingTasks: function () {
-      return db.query('SELECT * FROM tasks WHERE status = "new" ')
+      return db.query("SELECT * FROM tasks WHERE status = 'new' ")
         .then(function(data){
           console.log(data);
           return data;
